@@ -6,8 +6,7 @@ public class Hotels {
 	private int regularWeekDay;
 	private int regularWeekEnd;
 	
-	public Hotels() {
-		
+	public Hotels() {	
 	}
 	
 	Hotels(String hotelName) {
