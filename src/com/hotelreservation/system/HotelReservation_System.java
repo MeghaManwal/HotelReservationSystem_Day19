@@ -18,7 +18,7 @@ public class HotelReservation_System {
 		
 		b = new Hotels("BridgeWood");
 		b.setRegularWeekDay(160);
-		b.setRegularWeekEnd(60);
+		b.setRegularWeekEnd(40);
 		b.setRatings(4);
 		
 		c = new Hotels("RidgeWood");
@@ -43,18 +43,19 @@ public class HotelReservation_System {
             	     String day = date.substring(day_index_start + 1, day_index_end);
             	     if (type.equalsIgnoreCase("regular")) {
             	       if(day.equalsIgnoreCase("sun") || day.equalsIgnoreCase("sat")) {
-            		cost_a += a.getRegularWeekEnd();
-            		cost_b += b.getRegularWeekEnd();
-            		cost_c += c.getRegularWeekEnd();
+            		      cost_a += a.getRegularWeekEnd();
+            		      cost_b += b.getRegularWeekEnd();
+            		      cost_c += c.getRegularWeekEnd();
             	       }
                        else {
-            	        cost_a += a.getRegularWeekDay();
-        		cost_b += b.getRegularWeekDay();
-        		cost_c += c.getRegularWeekDay();
+            	              cost_a += a.getRegularWeekDay();
+        		      cost_b += b.getRegularWeekDay();
+        		      cost_c += c.getRegularWeekDay();
                        } 
                      } 
 		  }
 		}
+
 		System.out.println(cost_a);
 		System.out.println(cost_b);
 		System.out.println(cost_c);
@@ -65,12 +66,19 @@ public class HotelReservation_System {
 	
 	public  String min(int x, int y, int z) {
 		if(x<y && x<z) {
-			return a.getHotelName()+":"+ x;
+			return "Hotel: "+a.getHotelName()+" Rating: "+a.getRatings()+" Total Price:"+ x+"$";
 		}else if(y<x && y<z) {
-			return b.getHotelName()+":"+ y;
+			return "Hotel: "+b.getHotelName()+" Rating: "+b.getRatings()+" Total Price:"+ y+"$";
+		}else if(z<x && z<y) {
+			return "Hotel: "+c.getHotelName()+" Rating: "+c.getRatings()+" Total Price:"+ z+"$";
+		}else if(x==y || y==z) {
+			return "Hotel: "+b.getHotelName()+" Rating: "+b.getRatings()+" Total Price:"+ y+"$";
+		}else if(z==x) { 
+			return "Hotel: "+c.getHotelName()+" Rating: "+c.getRatings()+" Total Price:"+ z+"$";
 		}else {
-			return c.getHotelName()+":"+ z;
-		}	
+			return "Hotel: "+a.getHotelName()+" Rating: "+a.getRatings()+" Total Price:"+ x+"$";
+		}
+			
 	}
 	
 	public static void main(String[] args) {
