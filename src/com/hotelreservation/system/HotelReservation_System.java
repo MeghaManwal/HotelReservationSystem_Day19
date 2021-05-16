@@ -46,14 +46,14 @@ public class HotelReservation_System {
             		      cost_a += a.getRegularWeekEnd();
             		      cost_b += b.getRegularWeekEnd();
             		      cost_c += c.getRegularWeekEnd();
-            	       }
-                       else {
+            	        }
+                        else {
             	              cost_a += a.getRegularWeekDay();
         		      cost_b += b.getRegularWeekDay();
         		      cost_c += c.getRegularWeekDay();
-                       } 
-                     } 
-		  }
+                        } 
+                      } 
+		   }
 		}
 
 		System.out.println(cost_a);
@@ -71,10 +71,12 @@ public class HotelReservation_System {
 			return "Hotel: "+b.getHotelName()+" Rating: "+b.getRatings()+" Total Price:"+ y+"$";
 		}else if(z<x && z<y) {
 			return "Hotel: "+c.getHotelName()+" Rating: "+c.getRatings()+" Total Price:"+ z+"$";
-		}else if(x==y || y==z) {
-			return "Hotel: "+b.getHotelName()+" Rating: "+b.getRatings()+" Total Price:"+ y+"$";
-		}else if(z==x) { 
+		}else if(y<=z) {
 			return "Hotel: "+c.getHotelName()+" Rating: "+c.getRatings()+" Total Price:"+ z+"$";
+		}else if( x<=z) { 
+			return "Hotel: "+c.getHotelName()+" Rating: "+c.getRatings()+" Total Price:"+ z+"$";
+		}else if(y<=x) {
+			return "Hotel: "+b.getHotelName()+" Rating: "+b.getRatings()+" Total Price:"+ y+"$";
 		}else {
 			return "Hotel: "+a.getHotelName()+" Rating: "+a.getRatings()+" Total Price:"+ x+"$";
 		}
