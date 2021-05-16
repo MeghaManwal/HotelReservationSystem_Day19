@@ -1,13 +1,15 @@
 package com.hotelreservation.system;
 
-import java.util.Scanner;
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStreamReader;
 
 public class HotelReservation_System {
 	
 	private Hotels a, b, c;
 	
-	public void setHotelDetails() {
-		Scanner sc= new Scanner(System.in);
+	public void setHotelDetails() throws IOException {
+		BufferedReader bf = new BufferedReader(new InputStreamReader(System.in));
 		
 		System.out.println("HOTELS AND THEIR INFORMATIONS \n");
 		a= new Hotels("LakeWood");
@@ -39,7 +41,7 @@ public class HotelReservation_System {
                                    "Reward WeekDay Price: "+c.getRewardeeWeekDay()+"\n"+"Reward WeekEnd Price: "+c.getRewardeeWeekEnd()+"\n"+"Ratings:"+c.getRatings()+"\n");
         
 		System.out.println("Enter the Date with Customer type");
-                String date=sc.next();
+		 String date = bf.readLine();
 		int index = date.indexOf(":");
                 String type = date.substring(0, index);
 		
@@ -55,19 +57,30 @@ public class HotelReservation_System {
             
                   if(day_index_start != -1) {
             	     String day = date.substring(day_index_start + 1, day_index_end);
-            	     if (type.equalsIgnoreCase("regular")) {
             	       if(day.equalsIgnoreCase("sun") || day.equalsIgnoreCase("sat")) {
+            	    	 if (type.equalsIgnoreCase("regular")) { 
             		      cost_a += a.getRegularWeekEnd();
             		      cost_b += b.getRegularWeekEnd();
             		      cost_c += c.getRegularWeekEnd();
+            	    	 }else {
+            	    	      cost_a += a.getRewardeeWeekEnd();
+                              cost_b += b.getRewardeeWeekEnd();
+                              cost_c += c.getRewardeeWeekEnd();
+            	    	 }
             	        }
                         else {
-            	              cost_a += a.getRegularWeekDay();
-        		      cost_b += b.getRegularWeekDay();
-        		      cost_c += c.getRegularWeekDay();
+                    	   if (type.equalsIgnoreCase("regular")) {
+            	               cost_a += a.getRegularWeekDay();
+        		       cost_b += b.getRegularWeekDay();
+        		       cost_c += c.getRegularWeekDay();
+                    	   }else {
+                    	       cost_a += a.getRewardeeWeekEnd();
+                               cost_b += b.getRewardeeWeekEnd();
+                               cost_c += c.getRewardeeWeekEnd();
+                    	   }
                         } 
-                      } 
-		   }
+                       
+		    }
 		}
 
 		System.out.println(cost_a);
@@ -97,7 +110,7 @@ public class HotelReservation_System {
 			
 	}
 	
-	public static void main(String[] args) {
+	public static void main(String[] args) throws IOException {
 		HotelReservation_System system = new HotelReservation_System();
 		system.setHotelDetails();
 	}
