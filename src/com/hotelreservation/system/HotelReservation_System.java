@@ -9,7 +9,7 @@ public class HotelReservation_System {
 	public void setHotelDetails() {
 		Scanner sc= new Scanner(System.in);
 		System.out.println("Enter the Date with Customer type");
-    	String date=sc.next();
+    	        String date=sc.next();
     	
 		a= new Hotels("LakeWood");
 		a.setRegularWeekDay(110);
@@ -24,7 +24,7 @@ public class HotelReservation_System {
 		c.setRegularWeekEnd(150);
 
 		int index = date.indexOf(":");
-        String type = date.substring(0, index);
+                String type = date.substring(0, index);
 		
 		int cost_a=0;
 		int cost_b=0;
@@ -34,22 +34,23 @@ public class HotelReservation_System {
 		
 		while(day_index_start != -1) {
 			day_index_start = date.indexOf("(", day_index_start + 1);
-            day_index_end = date.indexOf(")", day_index_end + 1);
+                        day_index_end = date.indexOf(")", day_index_end + 1);
             
-            if(day_index_start != -1) {
-            	String day = date.substring(day_index_start + 1, day_index_end);
-            	if (type.equalsIgnoreCase("regular")) {
-            	if(day.equalsIgnoreCase("sun") || day.equalsIgnoreCase("sat")) {
+                  if(day_index_start != -1) {
+            	     String day = date.substring(day_index_start + 1, day_index_end);
+            	     if (type.equalsIgnoreCase("regular")) {
+            	       if(day.equalsIgnoreCase("sun") || day.equalsIgnoreCase("sat")) {
             		cost_a += a.getRegularWeekEnd();
             		cost_b += b.getRegularWeekEnd();
             		cost_c += c.getRegularWeekEnd();
-            	}
-                else {
-            	cost_a += a.getRegularWeekDay();
+            	       }
+                       else {
+            	        cost_a += a.getRegularWeekDay();
         		cost_b += b.getRegularWeekDay();
         		cost_c += c.getRegularWeekDay();
-            } } 
-		}
+                       } 
+                     } 
+		  }
 		}
 		System.out.println(cost_a);
 		System.out.println(cost_b);
@@ -61,11 +62,11 @@ public class HotelReservation_System {
 	
 	public  String min(int x, int y, int z) {
 		if(x<y && x<z) {
-			return a.getHotelName();
+			return a.getHotelName()+":"+ x;
 		}else if(y<x && y<z) {
-			return b.getHotelName();
+			return b.getHotelName()+":"+ y;
 		}else {
-			return c.getHotelName();
+			return c.getHotelName()+":"+ z;
 		}	
 	}
 	
