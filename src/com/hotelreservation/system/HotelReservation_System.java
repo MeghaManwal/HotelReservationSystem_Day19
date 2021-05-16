@@ -7,8 +7,10 @@ public class HotelReservation_System {
 	private Hotels a, b, c;
 	
 	public void setHotelDetails() {
-		Scanner s= new Scanner(System.in);
-	
+		Scanner sc= new Scanner(System.in);
+		System.out.println("Enter the Date with Customer type");
+    	String date=sc.next();
+    	
 		a= new Hotels("LakeWood");
 		a.setRegularWeekDay(110);
 		a.setRegularWeekEnd(90);
@@ -20,9 +22,9 @@ public class HotelReservation_System {
 		c = new Hotels("RidgeWood");
 		c.setRegularWeekDay(220);
 		c.setRegularWeekEnd(150);
-		
-		System.out.println("Enter the Date");
-		String date = s.next();
+
+		int index = date.indexOf(":");
+        String type = date.substring(0, index);
 		
 		int cost_a=0;
 		int cost_b=0;
@@ -36,18 +38,19 @@ public class HotelReservation_System {
             
             if(day_index_start != -1) {
             	String day = date.substring(day_index_start + 1, day_index_end);
+            	if (type.equalsIgnoreCase("regular")) {
             	if(day.equalsIgnoreCase("sun") || day.equalsIgnoreCase("sat")) {
             		cost_a += a.getRegularWeekEnd();
             		cost_b += b.getRegularWeekEnd();
             		cost_c += c.getRegularWeekEnd();
             	}
-            }else {
+                else {
             	cost_a += a.getRegularWeekDay();
         		cost_b += b.getRegularWeekDay();
         		cost_c += c.getRegularWeekDay();
-            }  
+            } } 
 		}
-		
+		}
 		System.out.println(cost_a);
 		System.out.println(cost_b);
 		System.out.println(cost_c);
