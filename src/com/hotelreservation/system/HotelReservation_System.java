@@ -14,14 +14,17 @@ public class HotelReservation_System {
 		a= new Hotels("LakeWood");
 		a.setRegularWeekDay(110);
 		a.setRegularWeekEnd(90);
+		a.setRatings(3);
 		
 		b = new Hotels("BridgeWood");
 		b.setRegularWeekDay(160);
 		b.setRegularWeekEnd(60);
+		b.setRatings(4);
 		
 		c = new Hotels("RidgeWood");
 		c.setRegularWeekDay(220);
 		c.setRegularWeekEnd(150);
+		c.setRatings(5);
 
 		int index = date.indexOf(":");
                 String type = date.substring(0, index);

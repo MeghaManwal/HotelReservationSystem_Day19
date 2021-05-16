@@ -5,8 +5,18 @@ public class Hotels {
 	private String hotelName;
 	private int regularWeekDay;
 	private int regularWeekEnd;
+	private int ratings;
+	
 	
 	public Hotels() {	
+	}
+	
+	public int getRatings() {
+		return ratings;
+	}
+
+	public void setRatings(int ratings) {
+		this.ratings = ratings;
 	}
 	
 	Hotels(String hotelName) {
