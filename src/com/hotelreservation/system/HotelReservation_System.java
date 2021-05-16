@@ -8,24 +8,38 @@ public class HotelReservation_System {
 	
 	public void setHotelDetails() {
 		Scanner sc= new Scanner(System.in);
-		System.out.println("Enter the Date with Customer type");
-    	        String date=sc.next();
-    	
+		
+		System.out.println("HOTELS AND THEIR INFORMATIONS \n");
 		a= new Hotels("LakeWood");
 		a.setRegularWeekDay(110);
 		a.setRegularWeekEnd(90);
+		a.setRewardeeWeekDay(80);
+		a.setRewardeeWeekEnd(80);
 		a.setRatings(3);
+		System.out.println("HotelName: "+ a.getHotelName()+"\n"+"Regular WeekDay Price: "+a.getRegularWeekDay()+"\n"+"Regular WeekEnd Price: "+a.getRegularWeekEnd()+"\n"+
+		                   "Reward WeekDay Price: "+a.getRewardeeWeekDay()+"\n"+"Reward WeekEnd Price: "+a.getRewardeeWeekEnd()+"\n"+"Ratings:"+a.getRatings()+"\n");
+		
 		
 		b = new Hotels("BridgeWood");
 		b.setRegularWeekDay(160);
 		b.setRegularWeekEnd(40);
+		b.setRewardeeWeekDay(110);
+		b.setRewardeeWeekEnd(50);
 		b.setRatings(4);
+		System.out.println("HotelName: "+ b.getHotelName()+"\n"+"Regular WeekDay Price: "+b.getRegularWeekDay()+"\n"+"Regular WeekEnd Price: "+b.getRegularWeekEnd()+"\n"+
+                                   "Reward WeekDay Price: "+b.getRewardeeWeekDay()+"\n"+"Reward WeekEnd Price: "+b.getRewardeeWeekEnd()+"\n"+"Ratings:"+b.getRatings()+"\n");
 		
 		c = new Hotels("RidgeWood");
 		c.setRegularWeekDay(220);
 		c.setRegularWeekEnd(150);
+		c.setRewardeeWeekDay(100);
+		c.setRewardeeWeekEnd(40);
 		c.setRatings(5);
-
+		System.out.println("HotelName: "+ c.getHotelName()+"\n"+"Regular WeekDay Price: "+c.getRegularWeekDay()+"\n"+"Regular WeekEnd Price: "+c.getRegularWeekEnd()+"\n"+
+                                   "Reward WeekDay Price: "+c.getRewardeeWeekDay()+"\n"+"Reward WeekEnd Price: "+c.getRewardeeWeekEnd()+"\n"+"Ratings:"+c.getRatings()+"\n");
+        
+		System.out.println("Enter the Date with Customer type");
+                String date=sc.next();
 		int index = date.indexOf(":");
                 String type = date.substring(0, index);
 		

@@ -6,11 +6,29 @@ public class Hotels {
 	private int regularWeekDay;
 	private int regularWeekEnd;
 	private int ratings;
+	private int rewardeeWeekDay;
+        private int rewardeeWeekEnd;
 	
 	
 	public Hotels() {	
 	}
 	
+	public int getRewardeeWeekDay() {
+		return rewardeeWeekDay;
+	}
+
+	public void setRewardeeWeekDay(int rewardeeWeekDay) {
+		this.rewardeeWeekDay = rewardeeWeekDay;
+	}
+
+	public int getRewardeeWeekEnd() {
+		return rewardeeWeekEnd;
+	}
+
+	public void setRewardeeWeekEnd(int rewardeeWeekEnd) {
+		this.rewardeeWeekEnd = rewardeeWeekEnd;
+	}
+
 	public int getRatings() {
 		return ratings;
 	}
