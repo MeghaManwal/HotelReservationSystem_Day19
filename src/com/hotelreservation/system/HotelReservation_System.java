@@ -102,23 +102,23 @@ public class HotelReservation_System {
 		System.out.println(finalresult);
 		
 	        }else
-		  System.out.println("Invalid Input! Please Provide Valid input");
+		 System.out.println("Invalid Input! Please Provide Valid input");
 	}
 	
 	public  String compare( int result, int x, int y, int z) {
 		
 	    if(result==x && result==y) {
-			return "Hotel: "+b.getHotelName()+" Rating: "+b.getRatings()+" Total Price:"+ y+"$";
+			return "Hotel:"+b.getHotelName()+", Rating:"+b.getRatings()+" And Total Rates:"+ y+"$";
 		}else if(result==x && result==z) {
-			return "Hotel: "+c.getHotelName()+" Rating: "+c.getRatings()+" Total Price:"+ z+"$";
+			return "Hotel:"+c.getHotelName()+", Rating:"+c.getRatings()+" And Total Rates:"+ z+"$";
 		}else if(result == x) {
-			return "Hotel: "+a.getHotelName()+" Rating: "+a.getRatings()+" Total Price:"+ x+"$";	
+			return "Hotel:"+a.getHotelName()+", Rating:"+a.getRatings()+" And Total Rates:"+ x+"$";	
 		}else if(result==y && result==z) {
-			return "Hotel: "+c.getHotelName()+" Rating: "+c.getRatings()+" Total Price:"+ z+"$";
+			return "Hotel:"+c.getHotelName()+", Rating:"+c.getRatings()+" And Total Rates:"+ z+"$";
 		}else if( result==y) { 
-			return "Hotel: "+b.getHotelName()+" Rating: "+b.getRatings()+" Total Price:"+ y+"$";	
+			return "Hotel:"+b.getHotelName()+", Rating:"+b.getRatings()+" And Total Rates:"+ y+"$";	
 		}else {
-			return "Hotel: "+c.getHotelName()+" Rating: "+c.getRatings()+" Total Price:"+ z+"$";
+			return "Hotel:"+c.getHotelName()+", Rating:"+c.getRatings()+" And Total Rates:"+ z+"$";
 		}
 			
 	}
