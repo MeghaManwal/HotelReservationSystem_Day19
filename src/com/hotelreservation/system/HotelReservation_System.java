@@ -3,6 +3,10 @@ package com.hotelreservation.system;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
+import java.util.Comparator;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
+import java.util.stream.Stream;
 
 public class HotelReservation_System {
 	
@@ -41,7 +45,10 @@ public class HotelReservation_System {
                                    "Reward WeekDay Price: "+c.getRewardeeWeekDay()+"\n"+"Reward WeekEnd Price: "+c.getRewardeeWeekEnd()+"\n"+"Ratings:"+c.getRatings()+"\n");
         
 		System.out.println("Enter the Date with Customer type");
-		 String date = bf.readLine();
+		String date = bf.readLine();
+		dateValidation(date);
+		if(dateValidation(date) == true) {
+		 
 		int index = date.indexOf(":");
                 String type = date.substring(0, index);
 		
@@ -58,15 +65,15 @@ public class HotelReservation_System {
                   if(day_index_start != -1) {
             	     String day = date.substring(day_index_start + 1, day_index_end);
             	       if(day.equalsIgnoreCase("sun") || day.equalsIgnoreCase("sat")) {
-            	    	 if (type.equalsIgnoreCase("regular")) { 
+            	    	   if (type.equalsIgnoreCase("regular")) { 
             		      cost_a += a.getRegularWeekEnd();
             		      cost_b += b.getRegularWeekEnd();
             		      cost_c += c.getRegularWeekEnd();
-            	    	 }else {
+            	    	   }else {
             	    	      cost_a += a.getRewardeeWeekEnd();
                               cost_b += b.getRewardeeWeekEnd();
                               cost_c += c.getRewardeeWeekEnd();
-            	    	 }
+            	    	   }
             	        }
                         else {
                     	   if (type.equalsIgnoreCase("regular")) {
@@ -78,8 +85,7 @@ public class HotelReservation_System {
                                cost_b += b.getRewardeeWeekEnd();
                                cost_c += c.getRewardeeWeekEnd();
                     	   }
-                        } 
-                       
+                        }  
 		    }
 		}
 
@@ -87,27 +93,42 @@ public class HotelReservation_System {
 		System.out.println(cost_b);
 		System.out.println(cost_c);
 		
-		String result = min(cost_a, cost_b, cost_c);
-		System.out.println(result);
+		int result = Stream.of(cost_a, cost_b, cost_c)
+			     .min(Comparator.comparing(Integer::valueOf))
+			     .get();
+		System.out.println("CheapestPrice: "+result+"$");
+		
+		String finalresult = compare(result, cost_a, cost_b, cost_c);
+		System.out.println(finalresult);
+		
+	        }else
+		  System.out.println("Invalid Input! Please Provide Valid input");
 	}
 	
-	public  String min(int x, int y, int z) {
-		if(x<y && x<z) {
-			return "Hotel: "+a.getHotelName()+" Rating: "+a.getRatings()+" Total Price:"+ x+"$";
-		}else if(y<x && y<z) {
+	public  String compare( int result, int x, int y, int z) {
+		
+	    if(result==x && result==y) {
 			return "Hotel: "+b.getHotelName()+" Rating: "+b.getRatings()+" Total Price:"+ y+"$";
-		}else if(z<x && z<y) {
+		}else if(result==x && result==z) {
 			return "Hotel: "+c.getHotelName()+" Rating: "+c.getRatings()+" Total Price:"+ z+"$";
-		}else if(y<=z) {
+		}else if(result == x) {
+			return "Hotel: "+a.getHotelName()+" Rating: "+a.getRatings()+" Total Price:"+ x+"$";	
+		}else if(result==y && result==z) {
 			return "Hotel: "+c.getHotelName()+" Rating: "+c.getRatings()+" Total Price:"+ z+"$";
-		}else if( x<=z) { 
-			return "Hotel: "+c.getHotelName()+" Rating: "+c.getRatings()+" Total Price:"+ z+"$";
-		}else if(y<=x) {
-			return "Hotel: "+b.getHotelName()+" Rating: "+b.getRatings()+" Total Price:"+ y+"$";
+		}else if( result==y) { 
+			return "Hotel: "+b.getHotelName()+" Rating: "+b.getRatings()+" Total Price:"+ y+"$";	
 		}else {
-			return "Hotel: "+a.getHotelName()+" Rating: "+a.getRatings()+" Total Price:"+ x+"$";
+			return "Hotel: "+c.getHotelName()+" Rating: "+c.getRatings()+" Total Price:"+ z+"$";
 		}
 			
+	}
+	
+	public boolean dateValidation(String date) {
+		String pattern1="^[A-Z a-z]{1,}[:][0-9]{1,}[A-Z a-z]{3,}[1-9]{1}[0-9]{3}[(][A-Z a-z]{3}[)][,][0-9]{1,}[A-Z a-z]{3,}[1-9]{1}[0-9]{3}[(][A-Z a-z]{3}[)]$";
+		Pattern P=Pattern.compile(pattern1);
+                Matcher m=P.matcher(date);
+                return m.matches();	
+		
 	}
 	
 	public static void main(String[] args) throws IOException {
